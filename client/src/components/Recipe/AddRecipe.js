@@ -3,6 +3,7 @@ import { Mutation } from "react-apollo";
 import { withRouter } from "react-router-dom";
 
 import Error from "../Error";
+import withAuth from "../withAuth";
 import { ADD_RECIPE, GET_ALL_RECIPES } from "../../queries";
 
 const initialState = {
@@ -17,8 +18,7 @@ class AddRecipe extends Component {
   state = { ...initialState };
 
   componentDidMount() {
-    const { loading } = this.props;
-    if (!loading) {
+    if (!this.props.loading) {
       this.setState({
         username: this.props.session.getCurrentUser.username
       });
@@ -62,6 +62,7 @@ class AddRecipe extends Component {
 
   render() {
     const { name, instructions, category, description, username } = this.state;
+    console.log(this.state);
     return (
       <Fragment>
         <h2 className="App">Add Recipe</h2>
@@ -123,4 +124,6 @@ class AddRecipe extends Component {
   }
 }
 
-export default withRouter(AddRecipe);
+export default withAuth(session => session && session.getCurrentUser)(
+  withRouter(AddRecipe)
+);

@@ -34,6 +34,8 @@ exports.resolvers = {
           $text: { $search: searchTerm }
         }).sort({ createdDate: "desc" });
         return searchResults;
+      } else {
+        return await Recipe.find().sort({ createdDate: "desc" });
       }
     }
   },

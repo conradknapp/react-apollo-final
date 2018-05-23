@@ -7,7 +7,7 @@ import "./index.css";
 import AddRecipe from "./components/Recipe/AddRecipe";
 import App from "./components/App";
 import Navbar from "./components/Navbar";
-import Profile from "./components/Profile";
+import Profile from "./components/Profile/Profile";
 import RecipePage from "./components/Recipe/RecipePage";
 import Search from "./components/Recipe/Search";
 import Signin from "./components/Auth/Signin";
@@ -31,6 +31,11 @@ const client = new ApolloClient({
         authorization: token
       }
     });
+  },
+  onError: ({ networkError }) => {
+    if (networkError) {
+      console.log("Network Error", networkError);
+    }
   }
 });
 
@@ -51,11 +56,15 @@ const Root = ({ session, loading, refetch }) => (
         exact
         component={() => <Signup refetch={refetch} />}
       />
-      <Route path="/profile" exact component={() => <Profile />} />
+      <Route
+        path="/profile"
+        exact
+        component={() => <Profile session={session} loading={loading} />}
+      />
       <Route
         path="/recipe/add"
         exact
-        component={() => <AddRecipe loading={loading} session={session} />}
+        component={() => <AddRecipe session={session} loading={loading} />}
       />
       <Route path="/recipes/:_id" exact component={() => <RecipePage />} />
     </React.Fragment>

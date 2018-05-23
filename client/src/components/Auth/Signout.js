@@ -2,7 +2,7 @@ import React from "react";
 import { ApolloConsumer } from "react-apollo";
 import { withRouter } from "react-router-dom";
 
-const signOut = (client, history) => {
+export const signOut = (client, history) => {
   localStorage.removeItem("token");
   client.resetStore();
   history.push("/");
