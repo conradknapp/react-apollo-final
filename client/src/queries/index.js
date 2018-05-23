@@ -101,6 +101,15 @@ export const GET_CURRENT_USER = gql`
   }
 `;
 
+/* User Mutations */
+export const DELETE_USER_RECIPE = gql`
+  mutation($_id: ID) {
+    deleteUserRecipe(_id: $_id) {
+      _id
+    }
+  }
+`;
+
 export const SIGNIN_USER = gql`
   mutation($username: String!, $password: String!) {
     signinUser(username: $username, password: $password) {
