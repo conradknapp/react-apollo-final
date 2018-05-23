@@ -14,11 +14,11 @@ const RecipePage = ({ match }) => {
         console.log(data);
         return (
           <div className="App">
-            <h2>{data.getRecipe.name}</h2>
-            <p>{data.getRecipe.category}</p>
-            <p>{data.getRecipe.description}</p>
-            <p>{data.getRecipe.instructions}</p>
-            <p>{data.getRecipe.username}</p>
+            <h2>Name: {data.getRecipe.name}</h2>
+            <p>Category: {data.getRecipe.category}</p>
+            <p>Description: {data.getRecipe.description}</p>
+            <p>Instructions: {data.getRecipe.instructions}</p>
+            <p>Created By: {data.getRecipe.username}</p>
           </div>
         );
       }}

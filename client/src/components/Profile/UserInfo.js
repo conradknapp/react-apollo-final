@@ -9,6 +9,7 @@ const formatDate = date => {
 
 const UserInfo = ({ username, email, joinDate, favorites }) => (
   <div className="App" style={{ marginBottom: "2em" }}>
+    <h2>User Info</h2>
     <p>Username: {username}</p>
     <p>Email: {email}</p>
     <p>Joined: {formatDate(joinDate)}</p>

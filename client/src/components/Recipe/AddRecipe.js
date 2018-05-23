@@ -62,7 +62,7 @@ class AddRecipe extends Component {
 
   render() {
     const { name, instructions, category, description, username } = this.state;
-    console.log(this.state);
+
     return (
       <Fragment>
         <h2 className="App">Add Recipe</h2>

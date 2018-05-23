@@ -1,7 +1,8 @@
 import React from "react";
 
 import UserInfo from "./UserInfo";
-import withAuth from '../withAuth';
+import UserRecipes from "./UserRecipes";
+import withAuth from "../withAuth";
 
 class Profile extends React.Component {
   state = {
@@ -30,10 +31,14 @@ class Profile extends React.Component {
 
   render() {
     if (this.props.loading) return <div className="App">Loading</div>;
-    return <UserInfo {...this.state} />;
+
+    return (
+      <div>
+        <UserInfo {...this.state} />
+        <UserRecipes {...this.props} />
+      </div>
+    );
   }
 }
 
-export default withAuth(session =>
-  session &&
-  session.getCurrentUser)(Profile);
+export default withAuth(session => session && session.getCurrentUser)(Profile);
