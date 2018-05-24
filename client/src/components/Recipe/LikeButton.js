@@ -1,7 +1,7 @@
 import React from "react";
 import { Mutation } from "react-apollo";
 
-import { LIKE_RECIPE, UNLIKE_RECIPE } from "../../queries";
+import { LIKE_RECIPE, UNLIKE_RECIPE, GET_RECIPE } from "../../queries";
 
 class LikeButton extends React.Component {
   state = {
@@ -29,13 +29,51 @@ class LikeButton extends React.Component {
     }
   };
 
+  updateLike = (cache, { data: { likeRecipe } }) => {
+    const { getRecipe } = cache.readQuery({
+      query: GET_RECIPE,
+      variables: { _id: this.props._id }
+    });
+
+    cache.writeQuery({
+      query: GET_RECIPE,
+      variables: { _id: this.props._id },
+      data: {
+        getRecipe: { ...getRecipe, likes: getRecipe.likes + 1 }
+      }
+    });
+  };
+
+  updateUnlike = (cache, { data: { unlikeRecipe } }) => {
+    const { getRecipe } = cache.readQuery({
+      query: GET_RECIPE,
+      variables: { _id: this.props._id }
+    });
+
+    cache.writeQuery({
+      query: GET_RECIPE,
+      variables: { _id: this.props._id },
+      data: {
+        getRecipe: { ...getRecipe, likes: getRecipe.likes - 1 }
+      }
+    });
+  };
+
   render() {
     const { _id } = this.props;
 
     return (
-      <Mutation mutation={UNLIKE_RECIPE} variables={{ _id }}>
+      <Mutation
+        mutation={UNLIKE_RECIPE}
+        variables={{ _id }}
+        update={this.updateUnlike}
+      >
         {unlikeRecipe => (
-          <Mutation mutation={LIKE_RECIPE} variables={{ _id }}>
+          <Mutation
+            mutation={LIKE_RECIPE}
+            variables={{ _id }}
+            update={this.updateLike}
+          >
             {likeRecipe => (
               <button
                 onClick={() => this.handleClick(likeRecipe, unlikeRecipe)}
