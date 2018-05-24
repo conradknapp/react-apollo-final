@@ -53,8 +53,8 @@ export const ADD_RECIPE = gql`
 `;
 
 export const LIKE_RECIPE = gql`
-  mutation($_id: ID) {
-    likeRecipe(_id: $_id) {
+  mutation($_id: ID, $username: String) {
+    likeRecipe(_id: $_id, username: $username) {
       _id
       likes
     }
@@ -62,8 +62,8 @@ export const LIKE_RECIPE = gql`
 `;
 
 export const UNLIKE_RECIPE = gql`
-  mutation($_id: ID) {
-    unlikeRecipe(_id: $_id) {
+  mutation($_id: ID, $username: String) {
+    unlikeRecipe(_id: $_id, username: $username) {
       _id
       likes
     }
@@ -92,6 +92,7 @@ export const GET_CURRENT_USER = gql`
       joinDate
       favorites {
         _id
+        name
       }
     }
   }

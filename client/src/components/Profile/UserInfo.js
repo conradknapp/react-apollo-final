@@ -16,9 +16,9 @@ const UserInfo = ({ username, email, joinDate, favorites }) => (
     <ul>
       <h3>{username}'s Favorites</h3>
       {favorites.map(favorite => (
-        <li key={favorite._id}>
-          <Link to={`/recipes/${favorite._id}`}>{favorite.name}</Link>
-        </li>
+        <Link key={favorite._id} to={`/recipes/${favorite._id}`}>
+          <li>{favorite.name}</li>
+        </Link>
       ))}
       {!favorites.length && (
         <h4>You have no favorites currently. Go add some!</h4>

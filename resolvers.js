@@ -64,17 +64,25 @@ exports.resolvers = {
       const recipe = await Recipe.findOneAndRemove({ _id });
       return recipe;
     },
-    likeRecipe: async (root, { _id }, { Recipe }) => {
+    likeRecipe: async (root, { _id, username }, { Recipe, User }) => {
       const recipe = await Recipe.findOneAndUpdate(
         { _id },
         { $inc: { likes: 1 } }
       );
+      const user = await User.findOneAndUpdate(
+        { username },
+        { $push: { favorites: _id } }
+      );
       return recipe;
     },
-    unlikeRecipe: async (root, { _id }, { Recipe }) => {
+    unlikeRecipe: async (root, { _id, username }, { Recipe, User }) => {
       const recipe = await Recipe.findOneAndUpdate(
         { _id },
         { $inc: { likes: -1 } }
+      );
+      const user = await User.findOneAndUpdate(
+        { username },
+        { $pop: { favorites: _id } }
       );
       return recipe;
     },

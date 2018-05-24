@@ -45,8 +45,8 @@ exports.typeDefs = `
 
   type Mutation {
     addRecipe(name: String, category: String, description: String, instructions: String, username: String): Recipe
-    likeRecipe(_id: ID): Recipe
-    unlikeRecipe(_id: ID): Recipe
+    likeRecipe(_id: ID, username: String): Recipe
+    unlikeRecipe(_id: ID, username: String): Recipe
     deleteUserRecipe(_id: ID, username: String): Recipe
     signinUser(username: String!, password: String!): Token!
     signupUser(username: String!, password: String!, email: String!): Token!

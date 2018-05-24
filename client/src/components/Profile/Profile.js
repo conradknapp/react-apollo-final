@@ -31,7 +31,6 @@ class Profile extends React.Component {
 
   render() {
     if (this.props.loading) return <div className="App">Loading</div>;
-
     return (
       <div>
         <UserInfo {...this.state} />
