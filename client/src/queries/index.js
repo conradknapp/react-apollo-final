@@ -52,6 +52,24 @@ export const ADD_RECIPE = gql`
   ${recipeFragments.recipe}
 `;
 
+export const LIKE_RECIPE = gql`
+  mutation($_id: ID) {
+    likeRecipe(_id: $_id) {
+      _id
+      likes
+    }
+  }
+`;
+
+export const UNLIKE_RECIPE = gql`
+  mutation($_id: ID) {
+    unlikeRecipe(_id: $_id) {
+      _id
+      likes
+    }
+  }
+`;
+
 /* User Queries */
 export const GET_USER_RECIPES = gql`
   query($username: String) {
