@@ -1,49 +1,33 @@
 import { gql } from "apollo-boost";
 
+import { recipeFragments } from "./fragments";
+
 /* Recipes Queries*/
 export const GET_RECIPE = gql`
   query($_id: ID!) {
     getRecipe(_id: $_id) {
-      _id
-      name
-      description
-      category
-      instructions
-      createdDate
-      likes
-      username
+      ...EntireRecipe
     }
   }
+  ${recipeFragments.recipe}
 `;
 
 export const GET_ALL_RECIPES = gql`
   query {
     getAllRecipes {
-      _id
-      name
-      description
-      category
-      instructions
-      createdDate
-      likes
-      username
+      ...EntireRecipe
     }
   }
+  ${recipeFragments.recipe}
 `;
 
 export const SEARCH_RECIPES = gql`
   query($searchTerm: String) {
     searchRecipes(searchTerm: $searchTerm) {
-      _id
-      name
-      description
-      category
-      instructions
-      createdDate
-      likes
-      username
+      ...EntireRecipe
     }
   }
+  ${recipeFragments.recipe}
 `;
 
 /* Recipe Mutations */
@@ -62,16 +46,10 @@ export const ADD_RECIPE = gql`
       category: $category
       username: $username
     ) {
-      _id
-      name
-      description
-      instructions
-      createdDate
-      category
-      username
-      likes
+      ...EntireRecipe
     }
   }
+  ${recipeFragments.recipe}
 `;
 
 /* User Queries */
