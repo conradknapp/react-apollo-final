@@ -54,7 +54,7 @@ class Signup extends Component {
         >
           {(signupUser, { data, loading, error }) => (
             <form
-              className="App"
+              className="form"
               onSubmit={event => this.handleSubmit(event, signupUser)}
             >
               <input
@@ -85,8 +85,12 @@ class Signup extends Component {
                 type="password"
                 placeholder="Confirm Password"
               />
-              <button disabled={loading || this.validateForm()} type="submit">
-                Sign Up
+              <button
+                disabled={loading || this.validateForm()}
+                type="submit"
+                className="button-primary"
+              >
+                Submit
               </button>
               {error && <Error error={error} />}
             </form>

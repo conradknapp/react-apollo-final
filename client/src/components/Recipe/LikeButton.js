@@ -10,16 +10,16 @@ class LikeButton extends React.Component {
     username: ""
   };
 
-  componentDidMount() {
-    const { loading, session, _id } = this.props;
-    if (!loading && !!session.getCurrentUser) {
-      const { favorites, username } = this.props.session.getCurrentUser;
-      this.setState({ username });
-      const previouslyLiked = favorites.findIndex(fav => fav._id === _id) > -1;
-      if (previouslyLiked) {
-        this.setState({ liked: true });
+  static getDerivedStateFromProps(props, state) {
+    if (!props.loading && props.session.getCurrentUser) {
+      const { username, favorites } = props.session.getCurrentUser;
+      const previouslyLiked =
+        favorites.findIndex(fav => fav._id === props._id) > -1;
+      if (username !== state.username) {
+        return { username, liked: previouslyLiked };
       }
     }
+    return null;
   }
 
   handleClick = (likeRecipe, unlikeRecipe) => {
@@ -78,7 +78,6 @@ class LikeButton extends React.Component {
   render() {
     const { _id } = this.props;
     const { username } = this.state;
-
     return (
       <Mutation
         mutation={UNLIKE_RECIPE}
@@ -94,6 +93,7 @@ class LikeButton extends React.Component {
             {likeRecipe =>
               username && (
                 <button
+                  className="button-primary"
                   onClick={() => this.handleClick(likeRecipe, unlikeRecipe)}
                 >
                   {this.state.liked ? "Unlike" : "Like"}

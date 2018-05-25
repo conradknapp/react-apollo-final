@@ -2,10 +2,48 @@
   text-align: center;
 }
 
+nav {
+  background-color: #efefef;
+  text-align: center;
+  margin-bottom: 1em;
+  padding-top: 2em;
+  padding-bottom: 0.2em;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+p,
+li {
+  font-size: 1.2em;
+}
+
 ul {
   list-style: none;
 }
 
+input,
+select,
+textarea {
+  padding: 0.4em 0.25em;
+  font-size: 1.2em;
+}
+
 .active {
   font-weight: bold;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.delete-button {
+  color: red;
+  cursor: pointer;
 }

@@ -15,7 +15,7 @@ const RecipePage = ({ match }) => {
         // console.log(data);
         return (
           <div className="App">
-            <h2>Name: {data.getRecipe.name}</h2>
+            <h2>{data.getRecipe.name}</h2>
             <p>Category: {data.getRecipe.category}</p>
             <p>Description: {data.getRecipe.description}</p>
             <p>Instructions: {data.getRecipe.instructions}</p>

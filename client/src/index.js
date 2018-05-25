@@ -78,8 +78,3 @@ ReactDOM.render(
   </ApolloProvider>,
   document.getElementById("root")
 );
-
-// Hot reloading
-if (module.hot) {
-  module.hot.accept();
-}

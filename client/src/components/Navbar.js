@@ -1,10 +1,10 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 
 import Signout from "./Auth/Signout";
 
 const Navbar = ({ session }) => (
-  <nav className="App">
+  <nav>
     {session && session.getCurrentUser ? (
       <NavbarAuth session={session} />
     ) : (
@@ -14,34 +14,38 @@ const Navbar = ({ session }) => (
 );
 
 const NavbarAuth = ({ session }) => (
-  <ul>
-    <li>
-      <NavLink to="/" exact activeClassName="active">
-        Home
-      </NavLink>
-    </li>
-    <li>
-      <NavLink to="/search" activeClassName="active">
-        Search
-      </NavLink>
-    </li>
-    <li>
-      <NavLink to="/recipe/add" activeClassName="active">
-        Add Recipe
-      </NavLink>
-    </li>
-    {session && (
+  <Fragment>
+    <ul>
       <li>
-        <NavLink to="/profile" activeClassName="active">
-          Profile
+        <NavLink to="/" exact activeClassName="active">
+          Home
         </NavLink>
       </li>
-    )}
-    <li>
-      <Signout />
-    </li>
-    <h3>Welcome, {session.getCurrentUser.username}</h3>
-  </ul>
+      <li>
+        <NavLink to="/search" activeClassName="active">
+          Search
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/recipe/add" activeClassName="active">
+          Add Recipe
+        </NavLink>
+      </li>
+      {session && (
+        <li>
+          <NavLink to="/profile" activeClassName="active">
+            Profile
+          </NavLink>
+        </li>
+      )}
+      <li>
+        <Signout />
+      </li>
+    </ul>
+    <h4>
+      Welcome, <strong>{session.getCurrentUser.username}</strong>
+    </h4>
+  </Fragment>
 );
 
 const NavbarUnAuth = () => (

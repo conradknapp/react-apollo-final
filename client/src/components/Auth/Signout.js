@@ -11,7 +11,9 @@ export const signOut = (client, history) => {
 const Signout = ({ history }) => (
   <ApolloConsumer>
     {client => (
-      <button onClick={() => signOut(client, history)}>Sign Out</button>
+      <button className="button" onClick={() => signOut(client, history)}>
+        Sign Out
+      </button>
     )}
   </ApolloConsumer>
 );

@@ -7,24 +7,27 @@ const formatDate = date => {
   return `${newDate} at ${newTime}`;
 };
 
-const UserInfo = ({ username, email, joinDate, favorites }) => (
-  <div className="App" style={{ marginBottom: "2em" }}>
-    <h3>User Info</h3>
-    <p>Username: {username}</p>
-    <p>Email: {email}</p>
-    <p>Joined: {formatDate(joinDate)}</p>
-    <ul>
-      <h3>{username}'s Favorites</h3>
-      {favorites.map(favorite => (
-        <Link key={favorite._id} to={`/recipes/${favorite._id}`}>
-          <li>{favorite.name}</li>
-        </Link>
-      ))}
-      {!favorites.length && (
-        <h4>You have no favorites currently. Go add some!</h4>
-      )}
-    </ul>
-  </div>
-);
+const UserInfo = ({ session, loading }) => {
+  if (loading) return <div className="App">Loading</div>;
+  return (
+    <div className="App" style={{ marginBottom: "2em" }}>
+      <h3>User Info</h3>
+      <p>Username: {session.getCurrentUser.username}</p>
+      <p>Email: {session.getCurrentUser.email}</p>
+      <p>Joined: {formatDate(session.getCurrentUser.joinDate)}</p>
+      <ul>
+        <h3>{session.getCurrentUser.username}'s Favorites</h3>
+        {session.getCurrentUser.favorites.map(favorite => (
+          <Link key={favorite._id} to={`/recipes/${favorite._id}`}>
+            <li>{favorite.name}</li>
+          </Link>
+        ))}
+        {!session.getCurrentUser.favorites.length && (
+          <p>You have no favorites currently. Go add some!</p>
+        )}
+      </ul>
+    </div>
+  );
+};
 
 export default UserInfo;

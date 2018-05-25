@@ -43,7 +43,10 @@ const UserRecipes = ({ loading, session }) => {
                 <Mutation
                   mutation={DELETE_USER_RECIPE}
                   variables={{ _id: recipe._id }}
-                  refetchQueries={() => [{ query: GET_ALL_RECIPES }, { query: GET_CURRENT_USER }]}
+                  refetchQueries={() => [
+                    { query: GET_ALL_RECIPES },
+                    { query: GET_CURRENT_USER }
+                  ]}
                   update={(cache, { data: { deleteUserRecipe } }) => {
                     const { getUserRecipes } = cache.readQuery({
                       query: GET_USER_RECIPES,
@@ -63,7 +66,7 @@ const UserRecipes = ({ loading, session }) => {
                   {(deleteUserRecipe, attrs = {}) => (
                     <p
                       onClick={() => handleDelete(deleteUserRecipe)}
-                      style={{ color: "red" }}
+                      className="delete-button"
                     >
                       {attrs.loading ? "deleting..." : "X"}
                     </p>

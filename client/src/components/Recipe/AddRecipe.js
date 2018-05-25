@@ -82,7 +82,7 @@ class AddRecipe extends Component {
         >
           {(addRecipe, { data, loading, error }) => (
             <form
-              className="App"
+              className="form"
               onSubmit={event => this.handleSubmit(event, addRecipe)}
             >
               <input
@@ -115,7 +115,11 @@ class AddRecipe extends Component {
                 onChange={this.handleChange}
                 placeholder="Add instructions"
               />
-              <button disabled={loading || this.validateForm()} type="submit">
+              <button
+                disabled={loading || this.validateForm()}
+                type="submit"
+                className="button-primary"
+              >
                 Add Recipe
               </button>
               {error && <Error error={error} />}

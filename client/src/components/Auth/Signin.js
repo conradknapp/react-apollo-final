@@ -55,7 +55,7 @@ class Signin extends Component {
         <Mutation mutation={SIGNIN_USER} variables={{ username, password }}>
           {(signinUser, { data, loading, error }) => (
             <form
-              className="App"
+              className="form"
               onSubmit={event => this.handleSubmit(event, signinUser)}
             >
               <input
@@ -72,8 +72,12 @@ class Signin extends Component {
                 type="password"
                 placeholder="Password"
               />
-              <button disabled={loading || this.validateForm()} type="submit">
-                Sign Up
+              <button
+                disabled={loading || this.validateForm()}
+                type="submit"
+                className="button-primary"
+              >
+                Submit
               </button>
               {error && <Error error={error} />}
             </form>
