@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import Signout from "./Auth/Signout";
 
@@ -16,17 +16,25 @@ const Navbar = ({ session }) => (
 const NavbarAuth = ({ session }) => (
   <ul>
     <li>
-      <Link to="/">Home</Link>
+      <NavLink to="/" exact activeClassName="active">
+        Home
+      </NavLink>
     </li>
     <li>
-      <Link to="/search">Search</Link>
+      <NavLink to="/search" activeClassName="active">
+        Search
+      </NavLink>
     </li>
     <li>
-      <Link to="/recipe/add">Add Recipe</Link>
+      <NavLink to="/recipe/add" activeClassName="active">
+        Add Recipe
+      </NavLink>
     </li>
     {session && (
       <li>
-        <Link to="/profile">Profile</Link>
+        <NavLink to="/profile" activeClassName="active">
+          Profile
+        </NavLink>
       </li>
     )}
     <li>
@@ -39,16 +47,24 @@ const NavbarAuth = ({ session }) => (
 const NavbarUnAuth = () => (
   <ul>
     <li>
-      <Link to="/">Home</Link>
+      <NavLink to="/" exact activeClassName="active">
+        Home
+      </NavLink>
     </li>
     <li>
-      <Link to="/search">Search</Link>
+      <NavLink to="/search" activeClassName="active">
+        Search
+      </NavLink>
     </li>
     <li>
-      <Link to="/signin">Sign In</Link>
+      <NavLink to="/signin" activeClassName="active">
+        Sign In
+      </NavLink>
     </li>
     <li>
-      <Link to="/signup">Sign Up</Link>
+      <NavLink to="/signup" activeClassName="active">
+        Sign Up
+      </NavLink>
     </li>
   </ul>
 );

@@ -1,6 +1,11 @@
-import React from "react";
+import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
 import "./index.css";
 
 // Import components
@@ -42,32 +47,25 @@ const client = new ApolloClient({
 // Root component - Where all routing is located
 const Root = ({ session, loading, refetch }) => (
   <Router>
-    <React.Fragment>
+    <Fragment>
       <Navbar session={session} />
-      <Route path="/" exact component={() => <App />} />
-      <Route path="/search" exact component={() => <Search />} />
-      <Route
-        path="/signin"
-        exact
-        component={() => <Signin refetch={refetch} />}
-      />
-      <Route
-        path="/signup"
-        exact
-        component={() => <Signup refetch={refetch} />}
-      />
-      <Route
-        path="/profile"
-        exact
-        component={() => <Profile session={session} loading={loading} />}
-      />
-      <Route
-        path="/recipe/add"
-        exact
-        component={() => <AddRecipe session={session} loading={loading} />}
-      />
-      <Route path="/recipes/:_id" exact component={() => <RecipePage />} />
-    </React.Fragment>
+      <Switch>
+        <Route path="/" exact render={() => <App />} />
+        <Route path="/search" render={() => <Search />} />
+        <Route path="/signin" render={() => <Signin refetch={refetch} />} />
+        <Route path="/signup" render={() => <Signup refetch={refetch} />} />
+        <Route
+          path="/profile"
+          render={() => <Profile session={session} loading={loading} />}
+        />
+        <Route
+          path="/recipe/add"
+          render={() => <AddRecipe session={session} loading={loading} />}
+        />
+        <Route path="/recipes/:_id" render={() => <RecipePage />} />
+        <Redirect to="/signin" />
+      </Switch>
+    </Fragment>
   </Router>
 );
 
