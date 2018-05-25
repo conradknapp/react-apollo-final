@@ -78,6 +78,7 @@ class LikeButton extends React.Component {
   render() {
     const { _id } = this.props;
     const { username } = this.state;
+    console.log(this.props.session);
     return (
       <Mutation
         mutation={UNLIKE_RECIPE}

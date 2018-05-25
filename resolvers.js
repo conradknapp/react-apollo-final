@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const { check, validationResult } = require("express-validator/check");
 
 // We need to create and return a token when the user both signs up and signs out; therefore we need to use this function in both cases
 const createToken = async (user, secret, expiresIn) => {
@@ -71,7 +72,7 @@ exports.resolvers = {
       );
       const user = await User.findOneAndUpdate(
         { username },
-        { $push: { favorites: _id } }
+        { $addToSet: { favorites: _id } }
       );
       return recipe;
     },
@@ -82,7 +83,7 @@ exports.resolvers = {
       );
       const user = await User.findOneAndUpdate(
         { username },
-        { $pop: { favorites: _id } }
+        { $pull: { favorites: _id } }
       );
       return recipe;
     },
@@ -90,6 +91,10 @@ exports.resolvers = {
       const user = await User.findOne({ username });
       if (!user) {
         throw new Error("No user found");
+      }
+      const valid = await bcrypt.compare(password, user.password);
+      if (!valid) {
+        throw new Error("Invalid password");
       }
       return { token: createToken(user, process.env.SECRET, "1h") };
     },

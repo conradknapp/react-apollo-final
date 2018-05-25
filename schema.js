@@ -12,7 +12,7 @@ exports.typeDefs = `
 
   type User {
     _id: ID
-    username: String!
+    username: String! @unique
     password: String!
     email: String!
     joinDate: String!
