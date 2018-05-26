@@ -1,9 +1,3 @@
-Course Order:
-
-* Tools used: Node/npm, VSCode, Prettier, git, etc.
-* Init backend: npm init, installing packages
-* Create server.js file
-
 Resources:
 
 * [Render Props in Apollo - Graph Cool](https://blog.graph.cool/tutorial-render-props-in-react-apollo-2-1-199e9e2bd01e)
