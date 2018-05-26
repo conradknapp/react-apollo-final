@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const { check, validationResult } = require("express-validator/check");
 
 // We need to create and return a token when the user both signs up and signs out; therefore we need to use this function in both cases
 const createToken = async (user, secret, expiresIn) => {
