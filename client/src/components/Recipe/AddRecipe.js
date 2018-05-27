@@ -17,12 +17,11 @@ const initialState = {
 class AddRecipe extends Component {
   state = { ...initialState };
 
-  componentDidMount() {
-    if (!this.props.loading) {
-      this.setState({
-        username: this.props.session.getCurrentUser.username
-      });
+  static getDerivedStateFromProps(props, state) {
+    if (!props.loading) {
+      return { username: props.session.getCurrentUser.username };
     }
+    return null;
   }
 
   handleChange = event => {
