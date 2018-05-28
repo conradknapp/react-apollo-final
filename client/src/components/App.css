@@ -18,7 +18,7 @@ nav ul {
 
 p,
 li {
-  font-size: 1.2em;
+  font-size: 2rem;
 }
 
 ul {
@@ -28,7 +28,7 @@ ul {
 input,
 select,
 textarea {
-  padding: 0.4em 0.25em;
+  padding: 0.4em 0.2em;
   font-size: 1.2em;
 }
 
