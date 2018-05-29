@@ -44,6 +44,6 @@ textarea {
 }
 
 .delete-button {
-  color: darkred;
+  color: red;
   cursor: pointer;
 }
