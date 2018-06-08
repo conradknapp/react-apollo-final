@@ -23,9 +23,9 @@ const RecipePage = ({ match }) => {
               }}
               className="recipe-image"
             />
-            <div className="recipe-body">
-              <div className="recipe-body__header">
-                <h2 className="recipe-body__title">
+            <div className="recipe">
+              <div className="recipe-header">
+                <h2 className="recipe-name">
                   <strong>{data.getRecipe.name}</strong>
                 </h2>
                 <h5>
@@ -41,12 +41,12 @@ const RecipePage = ({ match }) => {
                   </span>
                 </p>
               </div>
-              <blockquote className="recipe-body__description">
+              <blockquote className="recipe-description">
                 {data.getRecipe.description}
               </blockquote>
-              <h3 className="recipe-body__instructions-title">Instructions</h3>
+              <h3 className="recipe-instructions__title">Instructions</h3>
               <div
-                className="recipe-body__instructions"
+                className="recipe-instructions"
                 dangerouslySetInnerHTML={{
                   __html: data.getRecipe.instructions
                 }}

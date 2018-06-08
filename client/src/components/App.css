@@ -144,7 +144,7 @@ nav a:link {
 }
 
 .Snack {
-  width: 16%;
+  width: 20%;
   margin: 20px;
   z-index: 1;
   padding: 7px;
@@ -190,27 +190,27 @@ nav a:link {
   transition: opacity 0.3s ease-in-out;
 }
 
-.recipe-body {
+.recipe {
   text-align: center;
   background: whitesmoke;
   padding: 1em;
 }
 
-.recipe-body h1 {
+.recipe h1 {
   font-size: 2.5rem;
   text-align: center;
 }
 
-.recipe-body__header {
+.recipe-header {
   overflow: hidden;
-  background-image: url(https://23209-presscdn-pagely.netdna-ssl.com/wp-content/themes/damndelicious/images/bg.png);
+  background-image: url(https://bit.ly/2JqRbuI);
 }
 
-.recipe-body__header > p {
+.recipe-header > p {
   margin: 0;
 }
 
-.recipe-body__description {
+.recipe-description {
   font-size: 2rem;
   color: darkslategray;
   padding: 1em;
@@ -220,22 +220,22 @@ nav a:link {
   font-style: italic;
 }
 
-.recipe-body__title {
+.recipe-name {
   color: #1eaedb;
   text-decoration: underline;
   text-decoration-style: wavy;
 }
 
-.recipe-body__instructions {
+.recipe-instructions {
   text-align: left;
   padding: 0 2em;
 }
 
-.recipe-body__instructions * {
+.recipe-instructions * {
   padding-bottom: 0.5em;
 }
 
-.recipe-body__instructions-title {
+.recipe-instructions__title {
   font-weight: 200;
   letter-spacing: 2px;
   color: #1eaedb;
