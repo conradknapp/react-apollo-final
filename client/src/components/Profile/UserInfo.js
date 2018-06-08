@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import Spinner from "../Spinner";
+
 const formatDate = date => {
   const newDate = new Date(date).toLocaleDateString("en-US");
   const newTime = new Date(date).toLocaleTimeString("en-US");
@@ -8,7 +10,7 @@ const formatDate = date => {
 };
 
 const UserInfo = ({ session, loading }) => {
-  if (loading) return <div className="App">Loading</div>;
+  if (loading) return <Spinner />;
   return (
     <div className="App" style={{ marginBottom: "2em" }}>
       <h3>User Info</h3>

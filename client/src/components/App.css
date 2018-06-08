@@ -122,16 +122,6 @@ nav a:link {
   padding: 0.2em;
 }
 
-.card-text:after {
-  width: 100%;
-  display: block;
-  height: 12%;
-  content: "";
-  position: absolute;
-  left: 0px;
-  top: 88%;
-}
-
 .Lunch {
   width: 20%;
   margin: 20px;
@@ -262,4 +252,9 @@ nav a:link {
 
 .search:focus {
   width: 12em;
+}
+
+.spinner {
+  text-align: center;
+  padding: 5em;
 }

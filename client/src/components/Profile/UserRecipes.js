@@ -2,6 +2,8 @@ import React from "react";
 import { Query, Mutation } from "react-apollo";
 import { Link } from "react-router-dom";
 
+import Spinner from "../Spinner";
+
 import {
   GET_USER_RECIPES,
   DELETE_USER_RECIPE,
@@ -25,7 +27,7 @@ const UserRecipes = ({ loading, session }) => {
   return (
     <Query query={GET_USER_RECIPES} variables={{ username }}>
       {({ data, loading, error }) => {
-        if (loading) return <div>Loading</div>;
+        if (loading) return <Spinner />;
         if (error) return <div>Error</div>;
         // console.log(data);
         return (
