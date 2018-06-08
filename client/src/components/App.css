@@ -7,12 +7,14 @@ nav {
   padding-bottom: 0.2em;
   padding-top: 2em;
   background-color: #efefef;
+  box-shadow: -3px 3px 10px 0px rgba(168, 168, 168, 0.7);
 }
 
 nav ul {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 p,
@@ -28,7 +30,14 @@ input,
 select,
 textarea {
   padding: 0.4em 0.2em;
-  font-size: 1.2rem;
+  font-size: 2rem;
+}
+
+nav a,
+nav a:link {
+  text-decoration: none;
+  font-size: 2.5rem;
+  font-weight: 100;
 }
 
 .active {
@@ -47,7 +56,9 @@ textarea {
   cursor: pointer;
 }
 
-.title {
+/* App */
+
+.main-title {
   padding: 0.5em;
   color: #1eaedb;
   margin: 0;
@@ -55,7 +66,7 @@ textarea {
   text-decoration-style: dotted;
 }
 
-.Cards {
+.cards {
   display: grid;
   margin: 1.5em 3em;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -65,24 +76,22 @@ textarea {
   grid-auto-rows: 300px;
 }
 
-.Card {
+.card {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   box-shadow: -3px 3px 10px 0px rgba(168, 168, 168, 0.4);
   text-align: center;
-  font-size: 18px;
   background: #ddd;
   transition: all 0.3s;
 }
 
-.Card:hover {
+.card:hover {
   transform: scale(1.05);
-  border: 2px solid var(--main-contrast-color-hex);
 }
 
-.Card:after {
+.card:after {
   content: "";
   position: absolute;
   width: 100%;
@@ -92,11 +101,11 @@ textarea {
   transition: opacity 0.3s ease-in-out;
 }
 
-.Card:hover:after {
+.card:hover:after {
   opacity: 0;
 }
 
-.CardText {
+.card-text {
   position: relative;
   z-index: 1;
   color: rgb(39, 37, 37);
@@ -104,20 +113,19 @@ textarea {
   letter-spacing: 1px;
 }
 
-.CardText a {
+.card-text a {
   text-decoration: none;
 }
 
-.CardText h4 {
+.card-text h4 {
   margin: 0;
   padding: 0.2em;
 }
 
-.CardText:after {
+.card-text:after {
   width: 100%;
   display: block;
   height: 12%;
-  background: var(--rainbow-gradient);
   content: "";
   position: absolute;
   left: 0px;
@@ -166,6 +174,8 @@ textarea {
   border-radius: 50px 120px 120px;
 }
 
+/* Recipe Page */
+
 .recipe-image {
   height: 60vh;
   width: 100%;
@@ -180,34 +190,56 @@ textarea {
   transition: opacity 0.3s ease-in-out;
 }
 
-.article {
+.recipe-body {
   text-align: center;
   background: whitesmoke;
   padding: 1em;
 }
 
-.article h1 {
+.recipe-body h1 {
   font-size: 2.5rem;
   text-align: center;
 }
 
-.article-header {
+.recipe-body__header {
   overflow: hidden;
   background-image: url(https://23209-presscdn-pagely.netdna-ssl.com/wp-content/themes/damndelicious/images/bg.png);
 }
 
-.article-header > p {
+.recipe-body__header > p {
   margin: 0;
 }
 
-.article-description {
+.recipe-body__description {
   font-size: 2rem;
   color: darkslategray;
-  padding: 0.2em;
+  padding: 1em;
   font-weight: 200;
   background: white;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
   font-style: italic;
+}
+
+.recipe-body__title {
+  color: #1eaedb;
+  text-decoration: underline;
+  text-decoration-style: wavy;
+}
+
+.recipe-body__instructions {
+  text-align: left;
+  padding: 0 2em;
+}
+
+.recipe-body__instructions * {
+  padding-bottom: 0.5em;
+}
+
+.recipe-body__instructions-title {
+  font-weight: 200;
+  letter-spacing: 2px;
+  color: #1eaedb;
+  text-decoration: underline;
 }
 
 .like-button {
@@ -215,17 +247,19 @@ textarea {
   right: 1em;
   bottom: 1em;
   font-size: 2rem;
-  background: pink;
+  background-color: #f15f79;
+  color: white !important;
 }
 
-.article-title {
-  color: #1eaedb;
+/* Search */
+
+.search {
+  font-size: 3rem;
+  transition: width 0.2s ease-in;
+  margin: 2em;
+  width: 10em;
 }
 
-.instructions-title {
-  font-weight: 300;
-  letter-spacing: 1px;
-  color: #1eaedb;
-  text-decoration: underline;
-  text-decoration-style: dotted;
+.search:focus {
+  width: 12em;
 }

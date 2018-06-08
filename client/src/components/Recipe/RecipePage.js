@@ -23,24 +23,30 @@ const RecipePage = ({ match }) => {
               }}
               className="recipe-image"
             />
-            <div className="article">
-              <div className="article-header">
-                <h2 class="article-title">
+            <div className="recipe-body">
+              <div className="recipe-body__header">
+                <h2 className="recipe-body__title">
                   <strong>{data.getRecipe.name}</strong>
                 </h2>
-                <p>
+                <h5>
                   <strong>{data.getRecipe.category}</strong>
+                </h5>
+                <p>
+                  Created by <strong>{data.getRecipe.username}</strong>
                 </p>
                 <p>
-                  Created By <strong>{data.getRecipe.username}</strong>
+                  {data.getRecipe.likes}{" "}
+                  <span role="img" aria-label="heart">
+                    ❤️
+                  </span>
                 </p>
-                <p>{data.getRecipe.likes} Likes</p>
               </div>
-              <blockquote className="article-description">
+              <blockquote className="recipe-body__description">
                 {data.getRecipe.description}
               </blockquote>
-              <h3 className="instructions-title">Instructions</h3>
+              <h3 className="recipe-body__instructions-title">Instructions</h3>
               <div
+                className="recipe-body__instructions"
                 dangerouslySetInnerHTML={{
                   __html: data.getRecipe.instructions
                 }}

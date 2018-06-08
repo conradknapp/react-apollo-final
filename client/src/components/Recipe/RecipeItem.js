@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import posed from "react-pose";
 
 const recipeItemProps = {
-  open: { opacity: 1 },
-  closed: { opacity: 0 }
+  show: { opacity: 1 },
+  hide: { opacity: 0 }
 };
 
 const RecipeItem = posed.li(recipeItemProps);
@@ -14,10 +14,10 @@ export default ({ _id, name, imageUrl, category }) => (
     style={{
       background: `url(${imageUrl}) center center / cover no-repeat`
     }}
-    className="Card"
+    className="card"
   >
     <span className={category}>{category}</span>
-    <div className="CardText">
+    <div className="card-text">
       <Link to={`/recipes/${_id}`}>
         <h4>{name}</h4>
       </Link>

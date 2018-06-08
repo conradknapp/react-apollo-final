@@ -7,11 +7,11 @@ import { GET_ALL_RECIPES } from "../queries";
 import RecipeItem from "./Recipe/RecipeItem";
 
 const appProps = {
-  open: {
+  show: {
     x: "0%",
     staggerChildren: 100
   },
-  closed: {
+  hide: {
     x: "-100%"
   }
 };
@@ -19,18 +19,22 @@ const appProps = {
 const RecipeList = posed.ul(appProps);
 
 class App extends React.Component {
-  state = { isOpen: false };
+  state = {
+    on: false
+  };
 
   componentDidMount() {
-    setTimeout(this.toggle, 200);
+    setTimeout(this.slideIn, 200);
   }
 
-  toggle = () => this.setState({ isOpen: !this.state.isOpen });
+  slideIn = () => {
+    this.setState({ shown: !this.state.shown });
+  };
 
   render() {
     return (
       <div className="App">
-        <h1 className="title">
+        <h1 className="main-title">
           Find Recipes You <strong>Love</strong>
         </h1>
         <Query query={GET_ALL_RECIPES}>
@@ -38,9 +42,9 @@ class App extends React.Component {
             if (loading) return <div>Loading</div>;
             if (error) return <div>Error</div>;
             // console.log(data);
-            const { isOpen } = this.state;
+            const { shown } = this.state;
             return (
-              <RecipeList className="Cards" pose={isOpen ? "open" : "closed"}>
+              <RecipeList className="cards" pose={shown ? "show" : "hide"}>
                 {data.getAllRecipes.map(recipe => (
                   <RecipeItem key={recipe._id} {...recipe} />
                 ))}

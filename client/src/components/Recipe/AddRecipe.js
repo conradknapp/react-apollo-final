@@ -131,7 +131,9 @@ class AddRecipe extends React.Component {
                   onChange={this.handleChange}
                   value={description}
                 />
+                <label for="instructions">Add Instructions</label>
                 <CKEditor
+                  name="instructions"
                   content={instructions}
                   events={{ change: this.handleEditorChange }}
                 />
